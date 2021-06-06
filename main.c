@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "gps_calc.h"
+#include "headers/gps_calc.h"
 
 int main() {
 
