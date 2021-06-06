@@ -59,7 +59,7 @@ void get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
 } //get long and lat degrees from the data
 void calc_distance(float _lat1,float _long1,float _lat2,float _long2,float *distance)
 {
-    int earth_r = 6371 ;
+    int earth_r = 6371000 ;
     float lat_dif = degtorad(_lat2-_lat1);
     float long_dif = degtorad(_long2-_long1);
     float clamtinton = sin(lat_dif/2) * sin(lat_dif/2) + cos (degtorad(_lat1))* cos(degtorad(_lat2)) * sin(long_dif/2)* sin(long_dif/2);
@@ -69,27 +69,9 @@ void calc_distance(float _lat1,float _long1,float _lat2,float _long2,float *dist
 //printf("the value of %f\n" ,*distance);
 
 } // calculate two distancev between two points
-int main() {
-    
-  /* float _lat_float ;float _long_float ;
-   char *gps_data = "$GPGGA,002153.000,3342.6618,N,11751.3858,W,1,05,2.68,129.0,M,50.1,M,,*42";
 
-   get_lat_long(gps_data,&_lat_float,&_long_float);
+int main_Null() {
 
-
-
-  printf("%f\n",_lat_float); //float
-  printf("%f\n",_long_float); //float
-
-
-  float distance ,total_distance ;
-
-   calc_distance(40.689202777778,74.044219444444,38.889069444444,77.034502777778,&distance);
-
-   total_distance +=distance;
-
-    printf("%f\n",distance);
-    printf("The total distance = %f KM",total_distance);*/
     return 0;
 }
 
