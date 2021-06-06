@@ -57,7 +57,18 @@ void get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
 
     }
 } //get long and lat degrees from the data
+void calc_distance(float _lat1,float _long1,float _lat2,float _long2,float *distance)
+{
+    int earth_r = 6371 ;
+    float lat_dif = degtorad(_lat2-_lat1);
+    float long_dif = degtorad(_long2-_long1);
+    float clamtinton = sin(lat_dif/2) * sin(lat_dif/2) + cos (degtorad(_lat1))* cos(degtorad(_lat2)) * sin(long_dif/2)* sin(long_dif/2);
+    float comp = 2* atan2(sqrt(clamtinton), sqrt(1-clamtinton));
+    *distance = earth_r * comp ;
 
+//printf("the value of %f\n" ,*distance);
+
+} // calculate two distancev between two points
 int main() {
     
   /* float _lat_float ;float _long_float ;
