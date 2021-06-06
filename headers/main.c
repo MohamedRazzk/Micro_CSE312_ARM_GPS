@@ -3,7 +3,8 @@
 
 int main() {
 
-    float _lat_float , _long_float, distance ,total_distance ,p_lat_float,p_long_float ;
+    float _lat_float , _long_float, distance ,p_lat_float,p_long_float ;
+    float  total_distance = 0 ;
     //this main for dummy try that code is calculating the distance in the right way
     char *gps_data[6];
     gps_data[0]="$GPGGA,002153.000,30.065381,N,31.276990,W,1,05,2.68,129.0,M,50.1,M,,*42";
