@@ -70,10 +70,6 @@ void calc_distance(float _lat1,float _long1,float _lat2,float _long2,float *dist
 
 } // calculate two distancev between two points
 
-int main_Null() {
-
-    return 0;
-}
 
 
 
