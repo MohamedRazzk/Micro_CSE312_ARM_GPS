@@ -8,7 +8,7 @@
 </p>
 
 
-This is a University project, where students could apply Arm Knowlage throw gps tracker project in tiva c project using c porgramming languafe 
+This is a University project, where students could apply Arm Knowlage throw gps tracker project in tiva c project using c porgramming language using cc. 
 
 
 
