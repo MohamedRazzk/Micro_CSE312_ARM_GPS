@@ -1,3 +1,4 @@
+; to use this function in your C code write "extern fpu_init();"
 	.global fpu_init
 regz .field 0xE000ED88,32
 fpu_init:
