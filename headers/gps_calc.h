@@ -42,25 +42,25 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
         int position = result - gps_data;
         // int substringLength = strlen(str) - position;
 
+
         //printf("%d\n",position);
         //  printf("%d\n",substringLength);
 
         _lat = substr(gps_data, position + semi_pos[1] + 1, position + semi_pos[2]);
         _long = substr(gps_data, position + semi_pos[3] + 1, position + semi_pos[4]);
+        *b_lat = strcat(_lat,"\0") ; *b_long =strcat(_long,"\0");
 
-        *b_lat = strcat(_lat,'\0') ; *b_long =strcat(_long,'\0');
-
-/*
-        printf("%s  %s\n",_lat,_long);
+        if (strcmp(_lat,"") == 0|| strcmp(_long,"") == 0) {return false;}
+     /*   printf("%s  %s\n",_lat,_long);
         printf("%s  %s\n",*b_lat,*b_long);
         printf("%s\n",_lat);
-        printf("%s\n",_long);
-*/
+        printf("%s\n",_long);*/
         //printf(" in the funcation %s \n",_lat);
+
         *_lat_float = atof(_lat);
         *_long_float = atof(_long);
-        return true;
 
+        return true;
     }
     if (_lat == NULL || _long ==NULL) {return false;}
     return false;
