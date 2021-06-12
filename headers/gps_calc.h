@@ -48,16 +48,13 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
         _lat = substr(gps_data, position + semi_pos[1] + 1, position + semi_pos[2]);
         _long = substr(gps_data, position + semi_pos[3] + 1, position + semi_pos[4]);
 
-        *b_lat = strcat(_lat,"0\\") ; *b_long =strcat(_long,"0\\");
+        *b_lat = strcat(_lat,'\0') ; *b_long =strcat(_long,'\0');
 
 /*
-
         printf("%s  %s\n",_lat,_long);
         printf("%s  %s\n",*b_lat,*b_long);
         printf("%s\n",_lat);
         printf("%s\n",_long);
-
-
 */
         //printf(" in the funcation %s \n",_lat);
         *_lat_float = atof(_lat);
@@ -80,9 +77,3 @@ void calc_distance(float _lat1,float _long1,float _lat2,float _long2,float *dist
 //printf("the value of %f\n" ,*distance);
 
 } // calculate two distancev between two points
-
-
-
-
-
-
