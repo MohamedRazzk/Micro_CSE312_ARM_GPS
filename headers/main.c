@@ -29,7 +29,6 @@ int main() {
    {
 
       check_flag =get_lat_long(gps_data[i],&_lat_float,&_long_float ,&b_lat,&b_long);
-
        if (check_flag==false){s_counter+=1;}
        if (i>=s_counter)
        {

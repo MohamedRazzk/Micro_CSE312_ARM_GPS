@@ -4,6 +4,19 @@
 #include <math.h>
 #include <stdbool.h>
 
+
+char* stringcpy(const char* original) {
+
+    int size = strlen(original) ;
+    char* copy = malloc(size + 1);
+
+    int i;
+    for(i = 0; original[i] != '\0'; i++) {
+        copy[i] = original[i];
+    }
+    copy[i]=0;
+    return copy;
+}
 float degtorad(float deg){
     return deg* (M_PI/180);
 } //calculate the rad form degree
@@ -22,9 +35,10 @@ char* substr(const char *src, int m, int n)
 
     return dest - len;
 } //extract GPGGA line from data
-bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float,char** b_lat , char** b_long)
+bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float,char **b_lat , char **b_long)
 
 {
+
     int semi_pos[10];
     char* _lat=NULL; char* _long=NULL;
     if (gps_data[3]=='G'&& gps_data[4]=='G'&& gps_data[5]=='A') {
@@ -49,14 +63,25 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
 
         _lat = substr(gps_data, position + semi_pos[1] + 1, position + semi_pos[2]);
         _long = substr(gps_data, position + semi_pos[3] + 1, position + semi_pos[4]);
-        *b_lat = strcat(_lat,"\\") ; *b_long =strcat(_long,"\\");
+
+
 
         if (strcmp(_lat,"") == 0|| strcmp(_long,"") == 0) {return false;}
      /*   printf("%s  %s\n",_lat,_long);
         printf("%s  %s\n",*b_lat,*b_long);
         printf("%s\n",_lat);
-        printf("%s\n",_long);*/
+        printf("%s\n",_long);
+         printf("this is lat %s  %s\n",_lat,_long);
+        printf("%s  %s\n",*b_lat,*b_long);
+
+*/
+
         //printf(" in the funcation %s \n",_lat);
+
+        *b_lat= stringcpy(_lat) ; *b_long = stringcpy(_long);
+        strcat(*b_lat,"\\");
+        strcat(*b_long,"\\");
+
 
         *_lat_float = atof(_lat);
         *_long_float = atof(_long);
