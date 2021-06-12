@@ -11,7 +11,8 @@ char* substr(const char *src, int m, int n)
 {
     int len = n - m;
     char *dest = (char*)malloc(sizeof(char) * (len + 1));
-    for (int i = m; i < n && (*(src + i) != '\0'); i++)
+    int i;
+    for (i = m; i < n && (*(src + i) != '\0'); i++)
     {
         *dest = *(src + i);
         dest++;
@@ -28,8 +29,8 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
     char* _lat=NULL; char* _long=NULL;
     if (gps_data[3]=='G'&& gps_data[4]=='G'&& gps_data[5]=='A') {
         int counter = 0;
-
-        for (int i = 0; i < strlen(gps_data);) {
+        int i;
+        for (i = 0; i < strlen(gps_data);) {
             if (gps_data[i] == ',') {
                 semi_pos[counter] = i;
                 counter += 1;
@@ -48,7 +49,7 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
 
         _lat = substr(gps_data, position + semi_pos[1] + 1, position + semi_pos[2]);
         _long = substr(gps_data, position + semi_pos[3] + 1, position + semi_pos[4]);
-        *b_lat = strcat(_lat,"\0") ; *b_long =strcat(_long,"\0");
+        *b_lat = strcat(_lat,"\\") ; *b_long =strcat(_long,"\\");
 
         if (strcmp(_lat,"") == 0|| strcmp(_long,"") == 0) {return false;}
      /*   printf("%s  %s\n",_lat,_long);
@@ -73,7 +74,6 @@ void calc_distance(float _lat1,float _long1,float _lat2,float _long2,float *dist
     float clamtinton = sin(lat_dif/2) * sin(lat_dif/2) + cos (degtorad(_lat1))* cos(degtorad(_lat2)) * sin(long_dif/2)* sin(long_dif/2);
     float comp = 2* atan2(sqrt(clamtinton), sqrt(1-clamtinton));
     *distance = earth_r * comp ;
-
 //printf("the value of %f\n" ,*distance);
 
 } // calculate two distancev between two points
