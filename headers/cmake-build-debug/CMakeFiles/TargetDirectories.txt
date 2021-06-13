@@ -1,3 +1,0 @@
-D:/MY Works/New folder/CSE_GPS/Micro_CSE312_ARM_GPS/headers/cmake-build-debug/CMakeFiles/headers.dir
-D:/MY Works/New folder/CSE_GPS/Micro_CSE312_ARM_GPS/headers/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/MY Works/New folder/CSE_GPS/Micro_CSE312_ARM_GPS/headers/cmake-build-debug/CMakeFiles/rebuild_cache.dir
