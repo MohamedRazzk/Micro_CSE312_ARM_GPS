@@ -41,6 +41,7 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
 
     int semi_pos[10];
     char* _lat=NULL; char* _long=NULL;
+    char* dummy_degree=NULL; 
     if (gps_data[3]=='G'&& gps_data[4]=='G'&& gps_data[5]=='A') {
         int counter = 0;
         int i;
@@ -64,27 +65,27 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
         _lat = substr(gps_data, position + semi_pos[1] + 1, position + semi_pos[2]);
         _long = substr(gps_data, position + semi_pos[3] + 1, position + semi_pos[4]);
 
-
-
         if (strcmp(_lat,"") == 0|| strcmp(_long,"") == 0) {return false;}
-     /*   printf("%s  %s\n",_lat,_long);
-        printf("%s  %s\n",*b_lat,*b_long);
-        printf("%s\n",_lat);
-        printf("%s\n",_long);
-         printf("this is lat %s  %s\n",_lat,_long);
-        printf("%s  %s\n",*b_lat,*b_long);
 
-*/
+        dummy_degree = substr(_lat ,2,9); _lat = substr(_lat ,0,2);
+        *_lat_float=atof(_lat)+(atof(dummy_degree)/60);
 
-        //printf(" in the funcation %s \n",_lat);
+        dummy_degree = substr(_long ,3,10); _long = substr(_long ,0,3);
+        *_long_float=atof(_long)+(atof(dummy_degree)/60);
 
-        *b_lat= stringcpy(_lat) ; *b_long = stringcpy(_long);
-        strcat(*b_lat,"\\");
-        strcat(*b_long,"\\");
+        sprintf(dummy_degree,"%f",*_lat_float);
+        strcat(*b_lat = stringcpy(dummy_degree),"\\");
+        sprintf(dummy_degree,"%f",*_long_float);
+        strcat(*b_long = stringcpy(dummy_degree),"\\");
 
+      //  *b_lat= stringcpy(_lat) ; *b_long = stringcpy(_long);
+      //  printf("Lat Long %f %f\n",*_lat_float,*_long_float);
+      //printf("Bluetooh %s  %s\n",*b_lat,*b_long);
+      //sprintf(dummy_degree,"%f",(atof(dummy_degree)/60));
+       // *b_lat= stringcpy(_lat) ; *b_long = stringcpy(_long);
+       // strcat(*b_lat,"\\");
+        //strcat(*b_long,"\\");
 
-        *_lat_float = atof(_lat);
-        *_long_float = atof(_long);
 
         return true;
     }
