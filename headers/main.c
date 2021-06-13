@@ -14,6 +14,7 @@ int main() {
     gps_data[0]=",,,,,,,,,,,,,,";
     gps_data[1]="$GPGGA,,,,,,,,,,,,,,";
     gps_data[2]="$GPGGA,002153.000,3006.53811,N,03127.69901,W,1,05,2.68,129.0,M,50.1,M,,*42";
+    //gps_data[2]="$GPGGA,002153.000,3002.88176,N,03123.01935,W,1,05,2.68,129.0,M,50.1,M,,*42"; //gnina home lol
     gps_data[3]="$GPGGA,002153.000,3006.56321,N,03127.76251,W,1,05,2.68,129.0,M,50.1,M,,*42";
     gps_data[4]="$GPGGA,002153.000,3006.58271,N,03127.82721,W,1,05,2.68,129.0,M,50.1,M,,*42";
     gps_data[5]="$GPGGA,002153.000,3006.59881,N,03127.87781,W,1,05,2.68,129.0,M,50.1,M,,*42";
@@ -41,8 +42,8 @@ int main() {
        p_long_float = _long_float;
        i+=1;
 
-      // printf("Float %f  %f\n",_lat_float,_long_float); //for printing float number returned
-       //printf("Blue  %s  %s\n",b_lat,b_long); //for printing Bluetooth data which will be set
+     //  printf("Float %f  %f\n",_lat_float,_long_float); //for printing float number returned
+      // printf("Blue  %s %s\n",b_lat,b_long); //for printing Bluetooth data which will be set
    }
 
 
