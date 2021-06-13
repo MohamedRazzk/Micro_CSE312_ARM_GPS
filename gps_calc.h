@@ -11,7 +11,7 @@ float degtorad(float deg)
 
 void calc_distance(float _lat1, float _long1, float _lat2, float _long2, float *distance)
 {
-    float earth_r = 6371 000.0;
+    float earth_r = 6371000.0;
     float lat_dif = degtorad(_lat2 - _lat1);
     float long_dif = degtorad(_long2 - _long1);
     float clamtinton = sin(lat_dif / 2.0) * sin(lat_dif / 2.0)
