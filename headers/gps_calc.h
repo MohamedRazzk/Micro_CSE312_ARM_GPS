@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
+#define M_PI 3.1415926
 
 
 char* stringcpy(const char* original) {
@@ -36,12 +37,11 @@ char* substr(const char *src, int m, int n)
     return dest - len;
 } //extract GPGGA line from data
 bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float,char **b_lat , char **b_long)
-
 {
 
     int semi_pos[10];
     char* _lat=NULL; char* _long=NULL;
-    char* dummy_degree=NULL; 
+    char* dummy_degree=NULL; char *result;int position;
     if (gps_data[3]=='G'&& gps_data[4]=='G'&& gps_data[5]=='A') {
         int counter = 0;
         int i;
@@ -54,10 +54,9 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
         }
 
         // printf("we are in the loop\n");
-        char *result = strstr(gps_data, "$GPGGA");
-        int position = result - gps_data;
+        result = strstr(gps_data, "$GPGGA");
+        position = result - gps_data;
         // int substringLength = strlen(str) - position;
-
 
         //printf("%d\n",position);
         //  printf("%d\n",substringLength);
@@ -79,12 +78,12 @@ bool get_lat_long (const char *gps_data , float *_lat_float , float *_long_float
         strcat(*b_long = stringcpy(dummy_degree),"\\");
 
 
-       //printf("Float  %f %f\n",*_lat_float,*_long_float);
-       //printf("Blue  %s %s\n",*b_lat,*b_long);
+        //printf("Float  %f %f\n",*_lat_float,*_long_float);
+        //printf("Blue  %s %s\n",*b_lat,*b_long);
 
-      //sprintf(dummy_degree,"%f",(atof(dummy_degree)/60));
-       // *b_lat= stringcpy(_lat) ; *b_long = stringcpy(_long);
-       // strcat(*b_lat,"\\");
+        //sprintf(dummy_degree,"%f",(atof(dummy_degree)/60));
+        // *b_lat= stringcpy(_lat) ; *b_long = stringcpy(_long);
+        // strcat(*b_lat,"\\");
         //strcat(*b_long,"\\");
 
 
