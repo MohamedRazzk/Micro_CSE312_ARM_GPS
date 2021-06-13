@@ -1,5 +1,7 @@
 #include "misc_functions.h"
 #include "tm4c123gh6pm.h"
+#ifndef _LCD16x2_H
+#define _LCD16x2_H
 /*
  * RS >> PB4
  * RW >> PB5
@@ -20,6 +22,7 @@ void write_cmd_4bit(int cmd)
 void LCD_clear()
 {
     write_cmd_4bit(1);
+    delay_us(2000);
 }
 void write_char_4bit(char x)
 {
@@ -30,6 +33,15 @@ void write_char_4bit(char x)
     delay_us(40);
 }
 
+void write_str_4bit(char* str)
+{
+    int i = 0;
+    while(str[i] != '\0')
+    {
+        write_char_4bit(str[i]);
+        i++;
+    }
+}
 void LCD_init()
 {
     delay_ms(50);
@@ -61,3 +73,4 @@ void LCD_init()
     GPIO_PORTB_DATA_R &= ~(1 << EN);
     delay_us(2000);
 }
+#endif
